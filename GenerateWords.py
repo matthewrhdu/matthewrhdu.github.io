@@ -9,9 +9,9 @@ def main():
     textlst = text.split(sep='\n')
 
     s = ""
-    size = randint(0, len(textlst) - 1)
     for i in range(100):
-        s += f"{i + 1}\t{textlst[i]}\n"
+        size = randint(0, len(textlst) - 1)
+        s += f"{i + 1}\t{textlst[size]}\n"
     print(s)
     file = open("Random_100.txt", 'w')
     file.write(s)
