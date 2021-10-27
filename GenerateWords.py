@@ -12,7 +12,6 @@ def main():
     for i in range(100):
         A = randint(0, len(textlst) - 1)
         s += f"{i + 1}\t{textlst[A]}\n"
-    print(s)
     file = open("Random_100.txt", 'w')
     file.write(s)
     file.close()
