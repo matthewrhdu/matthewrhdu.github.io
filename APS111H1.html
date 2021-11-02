@@ -9,12 +9,19 @@
 
 <p><a href="index.html">Back</a></p>
 
-<p id="demo"></p>
+<button id="demo" onclick="myFunction()"> Number 1 </button>
+<button id="demo1" onclick="myFunction2()"> Number 1 </button>
 
 <script>
-    const x = Math.random();
-    const y = Math.random();
-    document.getElementById("demo").innerHTML = x.toString() + y.toString();
+function myFunction(){
+    document.getElementById("demo").innerHTML = Math.floor(Math.random() * 100);
+    }
+</script>
+
+<script>
+function myFunction2(){
+    document.getElementById("demo1").innerHTML = Math.floor(Math.random() * 100);
+    }
 </script>
 
 <p><a href="Random_100.txt">Some Words</a></p>
