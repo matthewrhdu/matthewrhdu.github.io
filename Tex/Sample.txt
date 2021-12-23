@@ -1,0 +1,192 @@
+%%% CREATED BY MATTHEW DU. COPYRIGHT 2021
+
+% So this top part is known as the preamble. It contains all the formatting and shortcuts that you can possibly need. Nothing outside of the \begin{document} and \end{document} will show up in you document
+% Also, the % symbol is the comment symbol. Feel free to remove them if you need anything
+
+\documentclass[10pt]{article} % This is what your document is
+% Change the 10pt to whatever font you need.
+% Other document types are Beamer, report, thesis, etc. Beamer is special. I suggest you learn that last through google
+
+\usepackage{amsmath} % These are your math symbols
+\usepackage{amsfonts} % These are your math symbols
+\usepackage{amssymb} % These are your math symbols
+
+% These are like your formatting pages and extra fonts. I wouldn't worry about these
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% These are your page settings.
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage[
+top=2.54cm,
+bottom=2.54cm,
+left=2.54cm,
+right=2.54cm,
+]{geometry}
+
+%%% Other packages you may want. Just use overleaf if you want to learn use these %%%
+%\usepackage{pgfplots} % For graphs (https://www.overleaf.com/learn/latex/Pgfplots_package)
+%\usepackage{graphicx} % For images (https://www.overleaf.com/learn/latex/Inserting_Images)
+%\usepackage{xcolor} % For colours (https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+%\usepackage{tikz} % For drawings (see below)
+
+% These are just personal prefrences on formatting. The remove the automatic indent and sets a better paragraph skip and such things like that
+\parskip=.07in
+\parindent=0in
+\setlist{noitemsep}
+\pagestyle{fancy}
+\hyphenpenalty=10000
+
+% Don't worry about this lol. Credits to Prof Jason Siefkan for this code :)
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3}
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5}
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+% These are just a few shortcuts. Again, I took most of these from the source document from MAT223, but I added a few useful ones at the bottom
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\ihat}{\hat{i}}
+\newcommand{\jhat}{\hat{j}}
+\newcommand{\khat}{\hat{k}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Seriously. Don't worry about these. Credits to Francois Pitt from CSC165 for this code.
+
+\let\seiresfb\bfseries\def\bfseries{\boldmath\seiresfb}
+\let\seiresdm\mdseries\def\mdseries{\unboldmath\seiresdm}
+
+\let\strong\textbf
+
+\let\bigimplies\implies
+\renewcommand*\implies{\mathrel{\Rightarrow}}
+\let\bigiff\iff
+\renewcommand*\iff{\mathrel{\Leftrightarrow}}
+
+\let\emptysetorig\emptyset
+\renewcommand*\emptyset{\varnothing}
+
+\let\subsetorig\subset
+\renewcommand{\subset}{\subseteq}
+
+\let\epsilonorig\epsilon
+\renewcommand{\epsilon}{\varepsilon}
+
+% (Theses are induction stuff that we used in CSC165)
+\newcommand{\proofheader}[1]{\noindent \underline{\textbf{#1}}}
+\newcommand{\base}{\proofheader{Base Case}:}
+\newcommand{\istep}{\proofheader{Inductive Step}:}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Commands to make your code look neater. The black square for proofs and the spacing vv symbol (credits to Alfonso Gracia Saz for the idea. RIP)
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\vv}{\vspace{.2cm}}
+
+% Left and right footers
+\fancyfoot[L]{{\sc Left Footer here}}
+\fancyfoot[R]{{\sc Right footer here}}
+
+% You can use the following. I don't like it so I made an alternate below.
+% \title{Insert Title Here}
+% \author{Insert Author Here}
+% \date{} % Removes the date
+
+\begin{document}
+	% Here is a header for the document
+	\setheader{course}{title}{name}{student number}{}{}
+
+	% Here is my preferred title for things like homeworks. Replace with valid information
+	\begin{center}
+		{\large {\bf title}\\
+			{\bf course} \\
+			{name}}
+	\end{center}
+
+	%Another way to make titles. I don't like it but you might so here you go!
+	%\maketitle %<- Makes a title...
+	%\tableofcontents %<- Makes a table of contents... I WOULDN'T USE FOR ASSIGNMENTS!
+
+	% So your document starts here. Nothing befor the \begin{document} will be printed in your document. Everything afterwords will be printed.
+
+		%% Here are some helpful commands%%
+		%\section{section name} %<- Beginning a section header. If you don't want numbers, add a "*" between "section" and "{" (so \section*{section title})
+			%\chapter{chapter name} %<- depending on your document class, this one may look prettier than section. ** DOES NOT WORK IN ARTICLE. ONLY WORKS IN REPORT,THESIS, OR BOOK **
+
+			%%%% Environments (Things that have a \begin{...} and \end{...} and everything in between will be formatted cleanly) %%%%
+			%\begin{proof} %<- do I really need to explain this one?
+			%\begin{center} %<- Again, do I really need to explain this one
+			%\begin{align*} %<- For a system of equations. The '*' is to remove the automatic numbering which can be annoying. The alignment properties are the same as the tabular below
+
+			%\begin{tabular}{c} %<- For tables. See https://www.overleaf.com/learn/latex/Tables for more info.
+			% Basically, you the second bracket is to tell where to align things. For example, if I want a table like this:
+			%|    Title 1    |Title 2      |       Title 3|
+			%| Item Number 1 |Item Number 2| Item Number 3|
+			% I would put {|c|l|r|}, where the c, l, r are center, left, and right respectively.
+			% For each column in the table, you type in latex the following:
+			% >>> Item Number 1 & Item Number 2 & Item Number 3 \\
+			% Where the '&' symbol signifys a new block and the '\\' signifies a new line.
+
+			% For numbered lists, use enumerate (Replace enumerate with itemize if you want unnumbered lists)%= math symbols in display style. See https://www.overleaf.com/learn/latex/Lists for examples
+			%\begin{enumerate}
+			%	\item <write items here>
+			%\end{enumerate}
+
+			% \begin{tikzpicture} %<- For diagrams. YOU NEED TO UNCOMMENT \usepackage{tikz} TO USE THIS! This is really powerful but tricky, so I suggest you read this to learn: https://www.overleaf.com/learn/latex/TikZ_package
+				% In short, tikz allows you to draw diagrams on latex, but it works on a coordinate system, so you may need to use math to draw things. The basic command for a line is
+				% >>> \draw (start (as a tuple)) -- (end (as a tuple));
+				% You can format this line using optional commands like this
+				% >>> \draw[optional commands] (start (as a tuple)) -- (end (as a tuple));
+				% A node is an object that doesn't show up, but you can put text over. For example, if you want to write "Hello" as a "textbox" at (1, 2), you can do so using the following:
+				% >>> \node at (1,2) {Hello};
+
+				%%%% FONTS %%%%
+				%\textbf{ <insert text here>} % <- for bold text. Replace 'textbf' with 'textit' (shortcut on TexStudio as ctrl i) for italicize. 'textsc' for small caps (shortcut ctrl shift c) 'texttt' for typewriter (mainly to signify computer code - shortcut ctrl shift t).
+
+				%%%% Generally helpful things %%%%
+				%\newpage %<- makes a new page
+				%\pagebreak % <- makes a page break. I suggest you use \newpage but this also works
+				%\footnote{<footnote>} % <- Place where you want the note to appear. It will put the note in the footer
+				%% \\ %= line break (not integer division)
+				%$\backslash$ %= backslash. Yes that is important.
+				%\; %<- for space
+
+
+				%%%% MATH %%%%
+				% So to type math, you would need to be in a math environment. My preferred way to do this is using the $ symbol for inline math (for example $x^2 + 3$) or $$ for display style (For example $$\int_{a}^{b} x^2 \; dx$$). You can also use \[\] and \(\) respectively, but I don't like that
+				% Everything else is basically the same as piazza or Perusall!
+
+				% FOR SYSTEM OF EQUATION (The '&' is to tell latex where to align to)
+				%\[
+				%f(x) = \left\{
+				%\begin{array}{ll}
+				%	a + b &= 1 \\
+				%	b - a &= 5
+				%\end{array}
+				%\right.
+				%\]
+				%
+
+				%%%% FILE MANAGEMENT %%%%
+				% If you have a large file, you can use the:
+				% >>> \input{filename}
+				% Command. This allows you to be more organized by writing code in another file! Preambles are not required in the new file. Simply think of this as you replacing the code with this line of text, which tells it where to get the code. I suggest you use this after you get used to using latex!
+			\end{document}
